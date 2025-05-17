@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ MALORT POPE ✨</title>
+    <style>
+        @keyframes rainbow {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes starfield {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        @keyframes wobble {
+            0% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+            100% { transform: rotate(-5deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ff0000, #00ff00);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            font-family: "Comic Sans MS", cursive;
+            overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="font-size: 24px"><text y="20">👑</text></svg>') 0 0, auto;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4em;
+            animation: rainbow 3s linear infinite, float 3s ease-in-out infinite;
+            text-shadow: 2px 2px 4px #000;
+            margin: 20px;
+            z-index: 100;
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+            font-size: 2em;
+            color: yellow;
+            text-shadow: 0 0 10px #fff;
+        }
+
+        .floating {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .spinning {
+            animation: spin 4s linear infinite;
+        }
+
+        .marquee {
+            background: #000;
+            color: #fff;
+            padding: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .marquee span {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .counter {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: #000;
+            color: #0f0;
+            padding: 5px;
+            border: 2px solid #0f0;
+            font-family: "Courier New", monospace;
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 0, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .construction {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        .netscape {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            font-size: 0.8em;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .star {
+            position: fixed;
+            background: white;
+            border-radius: 50%;
+            animation: starfield linear infinite;
+            z-index: 1;
+        }
+
+        .new-badge {
+            position: absolute;
+            background: red;
+            color: white;
+            padding: 2px 5px;
+            font-size: 0.8em;
+            transform: rotate(-15deg);
+            animation: pulse 1s infinite;
+            z-index: 1000;
+        }
+
+        .midi-player {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #000;
+            color: #0f0;
+            padding: 5px;
+            border: 2px solid #0f0;
+            font-family: "Courier New", monospace;
+            animation: blink 2s infinite;
+        }
+
+        .hit-counter {
+            position: fixed;
+            top: 50px;
+            right: 10px;
+            background: #000;
+            color: #0f0;
+            padding: 5px;
+            border: 2px solid #0f0;
+            font-family: "Courier New", monospace;
+            transform: perspective(500px) rotateX(20deg);
+        }
+
+        .dancing-baby {
+            width: 200px;
+            height: 200px;
+            filter: hue-rotate(90deg) saturate(200%);
+            animation: wobble 0.5s infinite;
+        }
+
+        .fire-text {
+            background: linear-gradient(to bottom, #ff0000, #ff8800);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px #ff0000;
+            animation: rainbow 2s linear infinite;
+        }
+
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .webring {
+            position: fixed;
+            top: 50%;
+            right: -100px;
+            background: #ff00ff;
+            color: white;
+            padding: 10px;
+            transform: rotate(-90deg);
+            border: 2px solid yellow;
+            animation: shake 0.5s infinite;
+            z-index: 1000;
+        }
+
+        .guestbook-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #000080;
+            color: #00ff00;
+            padding: 20px;
+            border: 3px solid #ff0000;
+            z-index: 2000;
+            display: none;
+            font-family: "Comic Sans MS", cursive;
+            box-shadow: 0 0 20px #ff00ff;
+        }
+
+        .download-button {
+            position: fixed;
+            background: #ff0000;
+            color: white;
+            padding: 10px 20px;
+            border: 2px solid yellow;
+            animation: bounce 1s infinite;
+            z-index: 1000;
+            cursor: pointer;
+            font-family: "Comic Sans MS", cursive;
+            text-shadow: 2px 2px #000;
+            display: none;
+        }
+
+        .construction-cursor {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+        }
+
+        .ie6-badge {
+            position: fixed;
+            bottom: 50px;
+            left: 10px;
+            background: #000;
+            color: #0f0;
+            padding: 5px;
+            border: 2px solid #0f0;
+            font-family: "Courier New", monospace;
+            animation: blink 1s infinite;
+        }
+
+        .cursor-gif {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            width: 50px;
+            height: 50px;
+            display: none;
+        }
+
+        .rainbow-border {
+            animation: rainbow-border 3s linear infinite;
+            border: 5px solid;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        @keyframes rainbow-border {
+            0% { border-color: red; }
+            16% { border-color: orange; }
+            33% { border-color: yellow; }
+            50% { border-color: green; }
+            66% { border-color: blue; }
+            83% { border-color: indigo; }
+            100% { border-color: red; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="matrixRain" class="matrix-rain"></canvas>
+    <div class="container">
+        <h1 class="fire-text">✨ MALORT POPE ✨</h1>
+        <div class="blink">YOUR SPIRITUAL GUIDE TO THE BITTER TRUTH</div>
+        <div class="new-badge" style="top: 20%; left: 30%;">NEW!</div>
+        
+        <img src="https://media.giphy.com/media/3o7TKqnN349PBUtGFO/giphy.gif" alt="Dancing Pope" class="floating dancing-baby" style="top: 30%; left: 20%;">
+        <img src="https://media.giphy.com/media/3o7TKqnN349PBUtGFO/giphy.gif" alt="Dancing Pope" class="floating spinning dancing-baby" style="top: 40%; right: 20%;">
+        <img src="https://media.giphy.com/media/3o7TKqnN349PBUtGFO/giphy.gif" alt="Dancing Pope" class="floating dancing-baby" style="bottom: 30%; left: 30%;">
+        
+        <div class="construction">
+            <img src="https://web.archive.org/web/20091027130412/http://hk.geocities.com/alanhkg888/under_construction.gif" alt="Under Construction">
+            <div class="new-badge" style="top: -10px; right: -10px;">HOT!</div>
+        </div>
+
+        <div class="midi-player">♫ Now Playing: Malort.mp3 ♫</div>
+        <div class="hit-counter">Hits: 666</div>
+        <div class="netscape">Best viewed in Netscape Navigator at 800x600 resolution</div>
+        
+        <div class="marquee">
+            <span>🌟 WELCOME TO THE CHURCH OF MALORT 🌟 YOUR SOUL IS BITTER 🌟 REPENT AND DRINK 🌟 THE POPE DEMANDS IT 🌟 NEW! TRY OUR BITTER BLESSINGS! 🌟</span>
+        </div>
+
+        <div class="counter">Visitors: 1337</div>
+    </div>
+
+    <div class="webring">🌟 JOIN OUR WEBRING! 🌟</div>
+    <div class="ie6-badge">Best viewed in Internet Explorer 6.0</div>
+    
+    <div class="guestbook-popup" id="guestbook">
+        <h2>✨ Sign My Guestbook! ✨</h2>
+        <form>
+            <input type="text" placeholder="Your Name" style="background: #000; color: #0f0; border: 1px solid #0f0;">
+            <textarea placeholder="Your Message" style="background: #000; color: #0f0; border: 1px solid #0f0;"></textarea>
+            <button type="button" onclick="document.getElementById('guestbook').style.display='none'" 
+                    style="background: #ff00ff; color: white; border: 2px solid yellow;">Submit!</button>
+        </form>
+    </div>
+
+    <div class="download-button" id="downloadBtn">🔥 DOWNLOAD MALORT NOW! 🔥</div>
+    <img src="https://web.archive.org/web/20091027130412/http://hk.geocities.com/alanhkg888/under_construction.gif" 
+         class="construction-cursor" id="constructionCursor">
+    <img src="https://media.giphy.com/media/3o7TKqnN349PBUtGFO/giphy.gif" class="cursor-gif" id="cursorGif">
+
+    <script>
+        // Cursor trail effect
+        const trails = [];
+        const trailCount = 20;
+
+        for (let i = 0; i < trailCount; i++) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            document.body.appendChild(trail);
+            trails.push({
+                element: trail,
+                x: 0,
+                y: 0
+            });
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            trails[0].x = e.clientX;
+            trails[0].y = e.clientY;
+        });
+
+        function updateTrails() {
+            for (let i = trails.length - 1; i > 0; i--) {
+                trails[i].x = trails[i-1].x;
+                trails[i].y = trails[i-1].y;
+            }
+
+            trails.forEach((trail, index) => {
+                trail.element.style.left = trail.x + 'px';
+                trail.element.style.top = trail.y + 'px';
+                trail.element.style.opacity = (trailCount - index) / trailCount;
+                trail.element.style.transform = `scale(${(trailCount - index) / trailCount})`;
+            });
+
+            requestAnimationFrame(updateTrails);
+        }
+
+        updateTrails();
+
+        // Create starfield
+        function createStarfield() {
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 3 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(star);
+            }
+        }
+        createStarfield();
+
+        // Matrix rain effect
+        const canvas = document.getElementById('matrixRain');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
+        const charArray = chars.split('');
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 33);
+
+        // Random color changes for background (more frequent)
+        setInterval(() => {
+            document.body.style.background = `linear-gradient(45deg, 
+                #${Math.floor(Math.random()*16777215).toString(16)}, 
+                #${Math.floor(Math.random()*16777215).toString(16)}, 
+                #${Math.floor(Math.random()*16777215).toString(16)}, 
+                #${Math.floor(Math.random()*16777215).toString(16)})`;
+        }, 2000);
+
+        // Fake visitor counter (more frequent updates)
+        setInterval(() => {
+            const counter = document.querySelector('.counter');
+            const currentCount = parseInt(counter.textContent.split(': ')[1]);
+            counter.textContent = `Visitors: ${currentCount + Math.floor(Math.random() * 5)}`;
+        }, 1000);
+
+        // Update hit counter
+        setInterval(() => {
+            const hitCounter = document.querySelector('.hit-counter');
+            const currentHits = parseInt(hitCounter.textContent.split(': ')[1]);
+            hitCounter.textContent = `Hits: ${currentHits + Math.floor(Math.random() * 2)}`;
+        }, 2000);
+
+        // Random "NEW!" badge positions
+        setInterval(() => {
+            const badges = document.querySelectorAll('.new-badge');
+            badges.forEach(badge => {
+                badge.style.left = Math.random() * 80 + 10 + '%';
+                badge.style.top = Math.random() * 80 + 10 + '%';
+            });
+        }, 3000);
+
+        // Random popup alerts
+        const messages = [
+            "Welcome to the Church of Malort!",
+            "You are visitor number 666!",
+            "This site is best viewed in Netscape Navigator!",
+            "Click here to download more RAM!",
+            "Your computer has a virus!",
+            "Congratulations! You've won a free Malort!",
+            "This website uses cookies (they're bitter too!)"
+        ];
+
+        setInterval(() => {
+            if (Math.random() < 0.3) { // 30% chance every 5 seconds
+                alert(messages[Math.floor(Math.random() * messages.length)]);
+            }
+        }, 5000);
+
+        // Guestbook popup
+        setInterval(() => {
+            if (Math.random() < 0.2) { // 20% chance every 10 seconds
+                document.getElementById('guestbook').style.display = 'block';
+            }
+        }, 10000);
+
+        // Download button follows cursor
+        let downloadBtn = document.getElementById('downloadBtn');
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.1) { // 10% chance to show
+                downloadBtn.style.display = 'block';
+                downloadBtn.style.left = (e.clientX + 20) + 'px';
+                downloadBtn.style.top = (e.clientY + 20) + 'px';
+            }
+        });
+
+        // Construction GIF follows cursor
+        let constructionCursor = document.getElementById('constructionCursor');
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.05) { // 5% chance to show
+                constructionCursor.style.display = 'block';
+                constructionCursor.style.left = (e.clientX + 30) + 'px';
+                constructionCursor.style.top = (e.clientY + 30) + 'px';
+                setTimeout(() => {
+                    constructionCursor.style.display = 'none';
+                }, 1000);
+            }
+        });
+
+        // Random GIF follows cursor
+        let cursorGif = document.getElementById('cursorGif');
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.03) { // 3% chance to show
+                cursorGif.style.display = 'block';
+                cursorGif.style.left = (e.clientX - 25) + 'px';
+                cursorGif.style.top = (e.clientY - 25) + 'px';
+                setTimeout(() => {
+                    cursorGif.style.display = 'none';
+                }, 1500);
+            }
+        });
+
+        // Make elements shake on hover
+        document.querySelectorAll('*').forEach(element => {
+            element.addEventListener('mouseover', () => {
+                if (Math.random() < 0.3) { // 30% chance
+                    element.style.animation = 'shake 0.5s infinite';
+                    setTimeout(() => {
+                        element.style.animation = '';
+                    }, 1000);
+                }
+            });
+        });
+
+        // Add rainbow borders randomly
+        setInterval(() => {
+            const elements = document.querySelectorAll('div, img, h1');
+            const randomElement = elements[Math.floor(Math.random() * elements.length)];
+            randomElement.classList.add('rainbow-border');
+            setTimeout(() => {
+                randomElement.classList.remove('rainbow-border');
+            }, 3000);
+        }, 2000);
+
+        // Make the webring bounce
+        const webring = document.querySelector('.webring');
+        setInterval(() => {
+            webring.style.right = (Math.random() * 20 - 10) + 'px';
+        }, 100);
+    </script>
+</body>
+</html>
