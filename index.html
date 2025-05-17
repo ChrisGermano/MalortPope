@@ -326,14 +326,79 @@
             83% { border-color: indigo; }
             100% { border-color: red; }
         }
+
+        @keyframes chicago-flag {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .chicago-flag-bg {
+            background: linear-gradient(45deg, 
+                #ffffff 25%, 
+                #ffffff 25%, 
+                #ffffff 50%, 
+                #ffffff 50%, 
+                #ffffff 75%, 
+                #ffffff 75%, 
+                #ffffff 100%);
+            background-size: 40px 40px;
+            animation: chicago-flag 1s linear infinite;
+            opacity: 0.1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .intensity-meter {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            color: #0f0;
+            padding: 5px 10px;
+            border: 2px solid #0f0;
+            font-family: "Courier New", monospace;
+            z-index: 2000;
+        }
+
+        .deep-dish {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background: #8B4513;
+            border-radius: 50%;
+            border: 10px solid #FFD700;
+            animation: spin 2s linear infinite;
+            z-index: 999;
+            display: none;
+        }
+
+        .cubs-logo {
+            position: fixed;
+            font-size: 2em;
+            color: #0E3386;
+            text-shadow: 2px 2px #CC3433;
+            animation: float 3s ease-in-out infinite;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
+    <div class="chicago-flag-bg"></div>
+    <div class="intensity-meter">MALORT INTENSITY: <span id="intensityLevel">0</span>%</div>
     <canvas id="matrixRain" class="matrix-rain"></canvas>
     <div class="container">
-        <h1 class="fire-text">✨ MALORT POPE ✨</h1>
-        <div class="blink">YOUR SPIRITUAL GUIDE TO THE BITTER TRUTH</div>
-        <div class="new-badge" style="top: 20%; left: 30%;">NEW!</div>
+        <h1 class="fire-text">✨ MALORT POPE OF CHICAGO ✨</h1>
+        <div class="blink">YOUR SPIRITUAL GUIDE TO THE BITTER TRUTH OF THE WINDY CITY</div>
+        <div class="new-badge" style="top: 20%; left: 30%;">NEW! TRY OUR DEEP DISH BLESSINGS!</div>
+        
+        <div class="cubs-logo" style="top: 15%; left: 10%;">⚾</div>
+        <div class="cubs-logo" style="top: 25%; right: 15%;">⚾</div>
         
         <img src="https://media.giphy.com/media/3o7TKqnN349PBUtGFO/giphy.gif" alt="Dancing Pope" class="floating dancing-baby" style="top: 30%; left: 20%;">
         <img src="https://media.giphy.com/media/3o7TKqnN349PBUtGFO/giphy.gif" alt="Dancing Pope" class="floating spinning dancing-baby" style="top: 40%; right: 20%;">
@@ -341,30 +406,30 @@
         
         <div class="construction">
             <img src="https://web.archive.org/web/20091027130412/http://hk.geocities.com/alanhkg888/under_construction.gif" alt="Under Construction">
-            <div class="new-badge" style="top: -10px; right: -10px;">HOT!</div>
+            <div class="new-badge" style="top: -10px; right: -10px;">FIRST AMERICAN POPE APPROVED!</div>
         </div>
 
-        <div class="midi-player">♫ Now Playing: Malort.mp3 ♫</div>
-        <div class="hit-counter">Hits: 666</div>
-        <div class="netscape">Best viewed in Netscape Navigator at 800x600 resolution</div>
+        <div class="midi-player">♫ Now Playing: Go Cubs Go (Malort Remix) ♫</div>
+        <div class="hit-counter">Malort Shots Served: 666</div>
+        <div class="netscape">Best viewed in Netscape Navigator at Wrigley Field</div>
         
         <div class="marquee">
-            <span>🌟 WELCOME TO THE CHURCH OF MALORT 🌟 YOUR SOUL IS BITTER 🌟 REPENT AND DRINK 🌟 THE POPE DEMANDS IT 🌟 NEW! TRY OUR BITTER BLESSINGS! 🌟</span>
+            <span>🌟 WELCOME TO THE CHURCH OF MALORT 🌟 BLESSED BY CARDINAL MUNDELEIN 🌟 APPROVED BY DEEP DISH PIZZA 🌟 BACKED BY THE CUBS' CURSE 🌟 TRY OUR BITTER BLESSINGS! 🌟</span>
         </div>
 
-        <div class="counter">Visitors: 1337</div>
+        <div class="counter">Malort Converts: 1337</div>
     </div>
 
     <div class="webring">🌟 JOIN OUR WEBRING! 🌟</div>
     <div class="ie6-badge">Best viewed in Internet Explorer 6.0</div>
     
     <div class="guestbook-popup" id="guestbook">
-        <h2>✨ Sign My Guestbook! ✨</h2>
+        <h2>✨ Sign The Malort Guestbook! ✨</h2>
         <form>
-            <input type="text" placeholder="Your Name" style="background: #000; color: #0f0; border: 1px solid #0f0;">
-            <textarea placeholder="Your Message" style="background: #000; color: #0f0; border: 1px solid #0f0;"></textarea>
+            <input type="text" placeholder="Your Chicago Neighborhood" style="background: #000; color: #0f0; border: 1px solid #0f0;">
+            <textarea placeholder="Your Malort Testimony" style="background: #000; color: #0f0; border: 1px solid #0f0;"></textarea>
             <button type="button" onclick="document.getElementById('guestbook').style.display='none'" 
-                    style="background: #ff00ff; color: white; border: 2px solid yellow;">Submit!</button>
+                    style="background: #ff00ff; color: white; border: 2px solid yellow;">Submit Your Soul!</button>
         </form>
     </div>
 
@@ -496,19 +561,67 @@
         // Random popup alerts
         const messages = [
             "Welcome to the Church of Malort!",
-            "You are visitor number 666!",
-            "This site is best viewed in Netscape Navigator!",
-            "Click here to download more RAM!",
-            "Your computer has a virus!",
-            "Congratulations! You've won a free Malort!",
-            "This website uses cookies (they're bitter too!)"
+            "Cardinal Mundelein approves this message!",
+            "Deep dish pizza is a way of life!",
+            "The Cubs curse is actually Malort!",
+            "Your soul is as bitter as our Malort!",
+            "Try our Malort-flavored deep dish!",
+            "Blessed by the Windy City!",
+            "Approved by the First American Pope!",
+            "Your browser is not Wrigley Field compatible!",
+            "Malort: The Official Drink of Chicago!",
+            "Deep dish is not a casserole!",
+            "The Malort Pope demands your repentance!",
+            "Your taste buds will never be the same!",
+            "Chicago-style Malort: Extra Bitter!",
+            "Cardinal Mundelein's favorite drink!"
         ];
 
-        setInterval(() => {
-            if (Math.random() < 0.3) { // 30% chance every 5 seconds
-                alert(messages[Math.floor(Math.random() * messages.length)]);
+        // Progressive intensity system
+        let intensity = 0;
+        const intensityMeter = document.getElementById('intensityLevel');
+        
+        function increaseIntensity() {
+            intensity = Math.min(100, intensity + 0.1);
+            intensityMeter.textContent = Math.floor(intensity);
+            
+            // Adjust animation speeds based on intensity
+            document.documentElement.style.setProperty('--animation-speed', `${2 - (intensity/100)}s`);
+            
+            // Increase frequency of effects
+            if (intensity > 25) {
+                // More frequent popups
+                setInterval(() => {
+                    if (Math.random() < (intensity/100)) {
+                        alert(messages[Math.floor(Math.random() * messages.length)]);
+                    }
+                }, 5000 - (intensity * 40));
             }
-        }, 5000);
+            
+            if (intensity > 50) {
+                // Spawn deep dish pizzas
+                setInterval(() => {
+                    if (Math.random() < (intensity/200)) {
+                        const pizza = document.createElement('div');
+                        pizza.className = 'deep-dish';
+                        pizza.style.left = Math.random() * window.innerWidth + 'px';
+                        pizza.style.top = Math.random() * window.innerHeight + 'px';
+                        document.body.appendChild(pizza);
+                        setTimeout(() => pizza.remove(), 3000);
+                    }
+                }, 1000);
+            }
+            
+            if (intensity > 75) {
+                // More intense background effects
+                document.body.style.animation = `gradient ${3 - (intensity/50)}s ease infinite`;
+            }
+        }
+
+        // Increase intensity on user interaction
+        document.addEventListener('mousemove', () => increaseIntensity());
+        document.addEventListener('click', () => increaseIntensity());
+        document.addEventListener('keypress', () => increaseIntensity());
 
         // Guestbook popup
         setInterval(() => {
@@ -580,6 +693,35 @@
         setInterval(() => {
             webring.style.right = (Math.random() * 20 - 10) + 'px';
         }, 100);
+
+        // Add Chicago flag stars
+        function createChicagoStars() {
+            for (let i = 0; i < 4; i++) {
+                const star = document.createElement('div');
+                star.innerHTML = '★';
+                star.style.position = 'fixed';
+                star.style.color = '#CC3433';
+                star.style.fontSize = '50px';
+                star.style.left = `${20 + (i * 20)}%`;
+                star.style.top = '10%';
+                star.style.animation = `float ${3 + i}s ease-in-out infinite`;
+                document.body.appendChild(star);
+            }
+        }
+        createChicagoStars();
+
+        // Make elements shake more intensely over time
+        setInterval(() => {
+            const elements = document.querySelectorAll('*');
+            elements.forEach(element => {
+                if (Math.random() < (intensity/100)) {
+                    element.style.animation = `shake ${0.5 - (intensity/200)}s infinite`;
+                    setTimeout(() => {
+                        element.style.animation = '';
+                    }, 1000);
+                }
+            });
+        }, 1000);
     </script>
 </body>
 </html>
